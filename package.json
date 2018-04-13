@@ -4,6 +4,8 @@
   "description": "Tools for development in web for odoo",
   "main": "index.js",
   "scripts": {
+    "build": "babel src/ --out-dir lib/",
+    "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,8 +19,8 @@
     "website",
     "orm"
   ],
-  "author": "Israel Lugo",
-  "license": "ISC",
+  "author": "Israel Lugo (Hostelix) <hostelixisrael@gmail.com>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/bmkeros/odoo-webkit/issues"
   },
@@ -28,6 +30,8 @@
     "lodash": "^4.17.5"
   },
   "devDependencies": {
-    "babel-plugin-transform-object-rest-spread": "^6.26.0"
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
   }
 }

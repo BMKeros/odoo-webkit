@@ -1,5 +1,4 @@
 import BaseModel from './base_model';
-import _ from 'lodash';
 
 class Model extends BaseModel {
     constructor(...args){

@@ -1,9 +1,6 @@
-import * as BaseModel from './base_model';
-import * as Model from './model';
-import * as Rpc from './rpc';
+import BaseModel from './base_model';
+import Model from './model';
+import Rpc from './rpc';
+import Auth from './auth';
 
-export {
-    BaseModel,
-    Model,
-    Rpc
-}
+export {BaseModel, Model, Rpc, Auth};

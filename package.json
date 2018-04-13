@@ -2,10 +2,10 @@
   "name": "odoo-webkit",
   "version": "1.0.0",
   "description": "Tools for development in web for odoo",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "build": "babel src/ --out-dir lib/",
-    "prepublish": "npm run build",
+    "prepare": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

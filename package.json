@@ -1,0 +1,33 @@
+{
+  "name": "odoo-webkit",
+  "version": "1.0.0",
+  "description": "Tools for development in web for odoo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BMKeros/odoo-web.git"
+  },
+  "keywords": [
+    "odoo",
+    "js",
+    "web",
+    "website",
+    "orm"
+  ],
+  "author": "Israel Lugo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bmkeros/odoo-webkit/issues"
+  },
+  "homepage": "https://github.com/bmkeros/odoo-webkit#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "lodash": "^4.17.5"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.26.0"
+  }
+}

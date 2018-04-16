@@ -4,6 +4,10 @@ class Model extends BaseModel {
     constructor(...args){
         super(...args);
 
+        this._fields = [];
+        this._order_by = [];
+        this._offset = 0;
+        this._limit = 40;
         this._filter = [];
         this._context = {};
     }
@@ -44,12 +48,20 @@ class Model extends BaseModel {
     }
 
     /**
-     * ----------
      *
      * @returns {Promise}
      */
     call_button(...args) {
         return super.call_button(...args);
+    }
+
+    /**
+     * Clone model
+     *
+     * @returns {Object} [Model]
+     */
+    clone() {
+        return {...this};
     }
 
     /**
@@ -120,6 +132,17 @@ class Model extends BaseModel {
             method: 'name_get',
             args: [ids],
             kwargs: {context: this.get_context()}
+        });
+    }
+
+    all() {
+        return super.search_read({
+            fields: this._fields,
+            domain: this._filter,
+            context: this._context,
+            offset: this._offset,
+            limit: this._limit,
+            sort: this._order_by
         });
     }
 }

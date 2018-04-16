@@ -1,6 +1,8 @@
 src/
 *.tz
 
+.babelrc
+
 #editor settings
 .idea
 .editorconfig

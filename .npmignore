@@ -1,2 +1,6 @@
 src/
 *.tz
+
+#editor settings
+.idea
+.editorconfig

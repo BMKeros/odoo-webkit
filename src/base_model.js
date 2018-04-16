@@ -11,6 +11,18 @@ class BaseModel extends Rpc {
         return super.rpc(url, {model: this.name, method, args, kwargs});
     }
 
+    search_read({fields = false, domain, context, offset, limit, sort}) {
+        return super.rpc('/web/dataset/search_read', {
+            model: this.name,
+            fields: fields || false,
+            domain: [domain],
+            context: [context],
+            offset: offset,
+            limit: limit,
+            sort: sort
+        });
+    }
+
     call_button({method, args = []}) {
         return super.rpc('/web/dataset/call_button', {
             model: this.name,

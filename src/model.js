@@ -37,7 +37,7 @@ class Model extends BaseModel {
     /**
      * ----------
      *
-     * @returns {Primise}
+     * @returns {Promise}
      */
     call(...args){
         return super.call(...args);

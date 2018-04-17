@@ -2,6 +2,9 @@ src/
 *.tz
 
 .babelrc
+.editorconfig
+.eslintrc
+
 
 #editor settings
 .idea

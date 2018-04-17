@@ -1,8 +1,8 @@
 import Rpc from './rpc';
 
 class Auth extends Rpc {
-  constructor(args) {
-    super(...args);
+  constructor(...args) {
+    super(args);
   }
 
   login(login, password, db = '') {

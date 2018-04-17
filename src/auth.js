@@ -1,17 +1,17 @@
 import Rpc from './rpc';
 
 class Auth extends Rpc {
-    constructor(...args) {
-        super(...args);
-    }
+  constructor(args) {
+    super(...args);
+  }
 
-    login(login, password, db = '') {
-        return super.rpc("/web/session/authenticate", {login, password, db});
-    }
+  login(login, password, db = '') {
+    return super.rpc('/web/session/authenticate', { login, password, db });
+  }
 
-    logout() {
-        return super.rpc("/web/session/destroy", {});
-    }
+  logout() {
+    return super.rpc('/web/session/destroy', {});
+  }
 }
 
 export default Auth;

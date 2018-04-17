@@ -8,6 +8,14 @@ class Rpc {
         };
     }
 
+    /**
+     * Create axios request
+     *
+     * @param {String} url
+     * @param {Object} params
+     *
+     * @returns {Promise}
+     */
     __jsonrpc(url, params) {
         return axios.post(url, {
             ...this._defaults,
@@ -16,10 +24,22 @@ class Rpc {
         });
     }
 
+    /**
+     * Generate unique id
+     * @returns {Number}
+     */
     static __generate_id() {
         return Math.floor(Math.random() * 1000 * 1000 * 1000);
     }
 
+    /**
+     * Create axios request
+     *
+     * @param {String} url
+     * @param {Object} params
+     *
+     * @returns {Promise}
+     */
     rpc(url, params){
         return this.__jsonrpc(url, params);
     }

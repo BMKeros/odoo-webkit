@@ -13,13 +13,13 @@ Tools for development in web for odoo
     const task = Model('todo.task');
     
     // Method create ERP
-    task.create({ name: "test", is_done: false }).then( response => console.log(response) );
+    task.create({ name: "test", is_done: false }).then(console.log);
     
     // Method write ERP
-    task.write(1, { is_done: true }).then( response => console.log(response) );
+    task.write(1, { is_done: true }).then(console.log);
     
     // Method unlink ERP
-    task.unlink(1).then( response => console.log(response) );
+    task.unlink(1).then(console.log);
     
 # Usage class Auth
     import { Auth } from 'odoo-webkit';
@@ -28,9 +28,9 @@ Tools for development in web for odoo
     
     // Method login
     // parameters username, password, database
-    auth.login('admin', 'admin', 'test').then( res => console.log(res) );
+    auth.login('admin', 'admin', 'test').then(console.log);
     
     // Method logout
-    auth.logout().then( res => console.log(res) );
+    auth.logout().then(console.log);
     
     

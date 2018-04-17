@@ -118,7 +118,7 @@ class Model extends BaseModel {
     return super.call({
       method: 'search_count',
       args: [this._filter],
-      kwargs: { context: this.get_context() }
+      kwargs: { context: this.get_context() },
     });
   }
 

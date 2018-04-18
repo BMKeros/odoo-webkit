@@ -1,4 +1,4 @@
-# odoo-webkit
+# odoo-webkit  [![Build Status](https://travis-ci.org/BMKeros/odoo-webkit.svg?branch=master)](https://travis-ci.org/BMKeros/odoo-webkit)
 Tools for development in web for odoo
 
 # Install with NPM

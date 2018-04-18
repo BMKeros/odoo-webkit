@@ -136,6 +136,13 @@ class Model extends BaseModel {
     });
   }
 
+  fields() {
+    return super.call({
+      method: 'fields_get',
+      kwargs: { context: this.get_context() },
+    });
+  }
+
   /**
    * Fetches all records matching the query
    *

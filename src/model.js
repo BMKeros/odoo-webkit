@@ -136,6 +136,13 @@ class Model extends BaseModel {
     });
   }
 
+  fields() {
+    return super.call({
+      method: 'fields_get',
+      kwargs: { context: this.get_context() },
+    });
+  }
+
   /**
    * Fetches all records matching the query
    *
@@ -148,7 +155,7 @@ class Model extends BaseModel {
       context: this.get_context(),
       offset: this._offset,
       limit: this._limit,
-      sort: this._order_by,
+      sort: this._order_by
     });
   }
 }

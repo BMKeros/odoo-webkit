@@ -133,7 +133,7 @@ class Model extends BaseModel {
       method: 'name_get',
       args: [ids],
       kwargs: { context: this.get_context() },
-    });
+    }).then(response => response.data.result);
   }
 
   /**
@@ -161,7 +161,7 @@ class Model extends BaseModel {
       offset: this._offset,
       limit: this._limit,
       sort: this._order_by,
-    });
+    }).then(response => response.data.result);
   }
 }
 

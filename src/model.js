@@ -136,6 +136,11 @@ class Model extends BaseModel {
     });
   }
 
+  /**
+   * Fetches all fields to model
+   *
+   * @returns {Promise}
+   */
   fields() {
     return super.call({
       method: 'fields_get',

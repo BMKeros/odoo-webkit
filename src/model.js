@@ -119,7 +119,7 @@ class Model extends BaseModel {
       method: 'search_count',
       args: [this._filter],
       kwargs: { context: this.get_context() },
-    });
+    }).then(response => response.data.result);
   }
 
   /**
@@ -145,7 +145,7 @@ class Model extends BaseModel {
     return super.call({
       method: 'fields_get',
       kwargs: { context: this.get_context() },
-    });
+    }).then(response => response.data.result);
   }
 
   /**

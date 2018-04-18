@@ -4,7 +4,7 @@ src/
 .babelrc
 .editorconfig
 .eslintrc
-
+.travis.yml
 
 #editor settings
 .idea

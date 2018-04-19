@@ -13,20 +13,11 @@ class Model extends BaseModel {
   }
 
   /**
-   * Set filter model
-   * @param {Array} filters
+   * Filter
+   * @param {Array} domain
    */
-  set filter(filters) {
-    this._filter = filters;
-  }
-
-  /**
-   * Get filter model
-   *
-   * @returns {Array} [filter]
-   */
-  get filter() {
-    return this._filter;
+  filter(domain) {
+    return this.clone({ filter: domain });
   }
 
   /**
@@ -60,8 +51,18 @@ class Model extends BaseModel {
    *
    * @returns {Object} [Model]
    */
-  clone() {
-    return { ...this };
+  clone(propSet) {
+    Object.keys(propSet).forEach((key) => {
+      switch (key) {
+        case 'filter':
+          this._filter = propSet[key];
+          break;
+        default:
+          break;
+      }
+    });
+
+    return Object.assign(Object.create(Object.getPrototypeOf(this)), this);
   }
 
   /**
@@ -119,7 +120,7 @@ class Model extends BaseModel {
       method: 'search_count',
       args: [this._filter],
       kwargs: { context: this.get_context() },
-    });
+    }).then(response => response.data.result);
   }
 
   /**
@@ -133,7 +134,7 @@ class Model extends BaseModel {
       method: 'name_get',
       args: [ids],
       kwargs: { context: this.get_context() },
-    });
+    }).then(response => response.data.result);
   }
 
   /**
@@ -145,7 +146,7 @@ class Model extends BaseModel {
     return super.call({
       method: 'fields_get',
       kwargs: { context: this.get_context() },
-    });
+    }).then(response => response.data.result);
   }
 
   /**
@@ -154,6 +155,19 @@ class Model extends BaseModel {
    * @returns {Promise}
    */
   all() {
+    return this._execute().then(response => response.data.result);
+  }
+
+  /**
+   * Execute query
+   *
+   * @returns {Promise}
+   */
+  get() {
+    return this._execute().then(response => response.data.result);
+  }
+
+  _execute() {
     return super.search_read({
       fields: this._fields,
       domain: this._filter,

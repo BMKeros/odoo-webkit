@@ -23,6 +23,14 @@ class Auth extends Rpc {
   logout() {
     return super.rpc('/web/session/destroy', {});
   }
+
+  /**
+   * Get info current session in odoo ERP
+   * @returns {Promise}
+   */
+  get_session() {
+    return super.rpc('/web/session/get_session_info', {});
+  }
 }
 
 export default Auth;

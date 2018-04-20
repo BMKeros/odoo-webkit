@@ -21,6 +21,22 @@ class Model extends BaseModel {
   }
 
   /**
+   * Limit
+   * @param {Number} limitParam
+   */
+  limit(limitParam) {
+    return this.clone({ limit: limitParam });
+  }
+
+  /**
+   * Offset
+   * @param {Number} offsetParam
+   */
+  offset(offsetParam) {
+    return this.clone({ offset: offsetParam });
+  }
+
+  /**
    * Get context model
    *
    * @returns {Object}
@@ -55,7 +71,13 @@ class Model extends BaseModel {
     Object.keys(propSet).forEach((key) => {
       switch (key) {
         case 'filter':
-          this._filter = propSet[key];
+          this._computedFilter(propSet[key]);
+          break;
+        case 'limit':
+          this._limit = propSet[key];
+          break;
+        case 'offset':
+          this._offset = propSet[key];
           break;
         default:
           break;
@@ -176,6 +198,12 @@ class Model extends BaseModel {
       limit: this._limit,
       sort: this._order_by,
     });
+  }
+
+  _computedFilter(domain) {
+    if (Array.isArray(domain)) {
+      this._fields.push(domain);
+    }
   }
 }
 

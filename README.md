@@ -8,29 +8,33 @@ Tools for development in web for odoo
     yarn add odoo-webkit
     
 # Usage class Model
-    import { Model } from 'odoo-webkit';
-    
-    const task = Model('todo.task');
-    
-    // Method create ERP
-    task.create({ name: "test", is_done: false }).then(console.log);
-    
-    // Method write ERP
-    task.write(1, { is_done: true }).then(console.log);
-    
-    // Method unlink ERP
-    task.unlink(1).then(console.log);
+```js
+import { Model } from 'odoo-webkit';
+
+const task = Model('todo.task');
+
+// Method create ERP
+task.create({ name: "test", is_done: false }).then(console.log);
+
+// Method write ERP
+task.write(1, { is_done: true }).then(console.log);
+
+// Method unlink ERP
+task.unlink(1).then(console.log);
+```
     
 # Usage class Auth
-    import { Auth } from 'odoo-webkit';
-    
-    const auth = Auth();
-    
-    // Method login
-    // parameters username, password, database
-    auth.login('admin', 'admin', 'test').then(console.log);
-    
-    // Method logout
-    auth.logout().then(console.log);
-    
+```js
+import { Auth } from 'odoo-webkit';
+
+const auth = Auth();
+
+// Method login
+// parameters username, password, database
+auth.login('admin', 'admin', 'test').then(console.log);
+
+// Method logout
+auth.logout().then(console.log);
+```
+
     

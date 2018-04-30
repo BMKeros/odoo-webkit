@@ -1,6 +1,6 @@
 {
   "name": "odoo-webkit",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Tools for development in web for odoo",
   "main": "lib/index.js",
   "scripts": {

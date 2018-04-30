@@ -13,7 +13,7 @@ class Auth extends Rpc {
    * @returns {Promise}
    */
   login(login, password, db = '') {
-    return super.rpc('/web/session/authenticate', { login, password, db });
+    return super.rpc('/web/session/authenticate', { login, password, db }).then(response => response.data);
   }
 
   /**
@@ -21,7 +21,7 @@ class Auth extends Rpc {
    * @returns {Promise}
    */
   logout() {
-    return super.rpc('/web/session/destroy', {});
+    return super.rpc('/web/session/destroy', {}).then(response => response.data);
   }
 
   /**
@@ -29,7 +29,7 @@ class Auth extends Rpc {
    * @returns {Promise}
    */
   get_session() {
-    return super.rpc('/web/session/get_session_info', {});
+    return super.rpc('/web/session/get_session_info', {}).then(response => response.data);
   }
 }
 

@@ -14,7 +14,7 @@ class Rpc {
    *
    * @returns {Object} [Axios]
    */
-  __makeAxios() {
+  static __makeAxios() {
     const instance = axios.create();
     instance.interceptors.response.use((response) => {
       if (Object.prototype.hasOwnProperty.call(response.data, 'error')) {

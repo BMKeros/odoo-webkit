@@ -6,24 +6,14 @@ class Rpc {
       jsonrpc: '2.0',
       method: 'call',
     };
-    this.instanceAxios = this.__makeAxios();
-  }
 
-  /**
-   * Create axios instance
-   *
-   * @returns {Object} [Axios]
-   */
-  static __makeAxios() {
-    const instance = axios.create();
-    instance.interceptors.response.use((response) => {
+    this.instanceAxios = axios.create();
+    this.instanceAxios.interceptors.response.use((response) => {
       if (Object.prototype.hasOwnProperty.call(response.data, 'error')) {
         return Promise.reject(response.data.error);
       }
       return response;
     }, err => Promise.reject(err));
-
-    return instance;
   }
 
   /**

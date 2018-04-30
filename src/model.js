@@ -202,7 +202,7 @@ class Model extends BaseModel {
 
   _computedFilter(domain) {
     if (Array.isArray(domain)) {
-      this._fields.push(domain);
+      this._filter.push(domain);
     }
   }
 }

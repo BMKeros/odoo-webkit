@@ -63,6 +63,14 @@ class Model extends BaseModel {
   }
 
   /**
+   *
+   * @returns {Promise}
+   */
+  exec_workflow(id, signal) {
+    return super.exec_workflow(id, signal);
+  }
+
+  /**
    * Clone model
    *
    * @returns {Object} [Model]
@@ -157,6 +165,21 @@ class Model extends BaseModel {
       args: [ids],
       kwargs: { context: this.get_context() },
     }).then(response => response.data.result);
+  }
+
+  /**
+   *
+   * @param {String} nameSearch name to perform a search for/on
+   * @returns {Promise}
+   */
+  name_search(nameSearch = '') {
+    return super.call('name_search', {
+      name: nameSearch,
+      args: this._filter,
+      operator: 'ilike',
+      context: this.get_context(),
+      limit: this._limit,
+    });
   }
 
   /**

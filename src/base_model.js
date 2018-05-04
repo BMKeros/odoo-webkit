@@ -26,6 +26,10 @@ class BaseModel extends Rpc {
       model: this.name, method, domain_id: null, args,
     });
   }
+
+  exec_workflow(id, signal) {
+    return super.rpc('/web/dataset/exec_workflow', { model: this.name, id, signal });
+  }
 }
 
 export default BaseModel;

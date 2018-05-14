@@ -9,7 +9,16 @@
     "no-underscore-dangle": [
       "error",
       {
-        "allowAfterThis": true
+        "allowAfterThis": true,
+        "allow": [
+          "_limit",
+          "_offset",
+          "_computedFilter",
+          "_fields",
+          "_order_by",
+          "_filter",
+          "_context"
+        ]
       }
     ],
     "camelcase": [

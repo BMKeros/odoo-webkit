@@ -76,23 +76,25 @@ class Model extends BaseModel {
    * @returns {Object} [Model]
    */
   clone(propSet) {
+    const modelClone = Object.assign(Object.create(Object.getPrototypeOf(this)), this);
+
     Object.keys(propSet).forEach((key) => {
       switch (key) {
         case 'filter':
-          this._computedFilter(propSet[key]);
+          modelClone._computedFilter(propSet[key]);
           break;
         case 'limit':
-          this._limit = propSet[key];
+          modelClone._limit = propSet[key];
           break;
         case 'offset':
-          this._offset = propSet[key];
+          modelClone._offset = propSet[key];
           break;
         default:
           break;
       }
     });
 
-    return Object.assign(Object.create(Object.getPrototypeOf(this)), this);
+    return modelClone;
   }
 
   /**
@@ -225,7 +227,7 @@ class Model extends BaseModel {
 
   _computedFilter(domain) {
     if (Array.isArray(domain)) {
-      this._filter.push(domain);
+      this._filter = this._filter.concat([domain]);
     }
   }
 }

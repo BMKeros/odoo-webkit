@@ -20,7 +20,10 @@
     "website",
     "orm"
   ],
-  "author": "Israel Lugo (Hostelix) <hostelixisrael@gmail.com>",
+  "author": {
+    "name": "Israel Lugo (Hostelix)",
+    "email": "hostelixisrael@gmail.com"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/bmkeros/odoo-webkit/issues"

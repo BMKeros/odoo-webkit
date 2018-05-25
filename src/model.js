@@ -11,6 +11,7 @@ class Model extends BaseModel {
     this._filter = [];
     this._context = {};
   }
+
   /**
    * Fields
    * @param {Array} fields
@@ -219,10 +220,14 @@ class Model extends BaseModel {
    *
    * @returns {Promise}
    */
-  get_fields() {
+  get_fields(fields = [], attributes = []) {
     return super.call({
       method: 'fields_get',
-      kwargs: { context: this.get_context() },
+      kwargs: {
+        context: this.get_context(),
+        allfields: fields,
+        attributes,
+      },
     }).then(response => response.data.result);
   }
 

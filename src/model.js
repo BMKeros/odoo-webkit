@@ -7,7 +7,7 @@ class Model extends BaseModel {
     this._fields = [];
     this._order_by = [];
     this._offset = 0;
-    this._limit = false;
+    this._limit = 10;
     this._filter = [];
     this._context = {};
   }
@@ -63,6 +63,7 @@ class Model extends BaseModel {
   }
 
   /**
+   * Execute workflow
    *
    * @returns {Promise}
    */
@@ -170,18 +171,37 @@ class Model extends BaseModel {
   }
 
   /**
+   * Reads default values for the current model
+   *
+   * @param {Array} [fields] fields to get default values for, by default all defaults are read
+   * @param {Object} [options] context data to add to the request payload
+   * on top of the DataSet's own context
+   * @returns {Promise}
+   */
+  default_get(fields, options = {}) {
+    return super.call({
+      method: 'default_get',
+      args: [fields],
+      kwargs: { context: this.get_context() },
+    }).then(response => response.data.result);
+  }
+
+  /**
    *
    * @param {String} nameSearch name to perform a search for/on
    * @returns {Promise}
    */
   name_search(nameSearch = '') {
-    return super.call('name_search', {
-      name: nameSearch,
+    return super.call({
+      method: 'name_search',
+      kwargs: {
+        name: nameSearch,
+        operator: 'ilike',
+        limit: this._limit,
+        context: this.get_context(),
+      },
       args: this._filter,
-      operator: 'ilike',
-      context: this.get_context(),
-      limit: this._limit,
-    });
+    }).then(response => response.data.result);
   }
 
   /**

@@ -11,6 +11,13 @@ class Model extends BaseModel {
     this._filter = [];
     this._context = {};
   }
+  /**
+   * Fields
+   * @param {Array} fields
+   */
+  fields(fieldsParam) {
+    return this.clone({ fields: fieldsParam });
+  }
 
   /**
    * Filter
@@ -83,6 +90,9 @@ class Model extends BaseModel {
       switch (key) {
         case 'filter':
           modelClone._computedFilter(propSet[key]);
+          break;
+        case 'fields':
+          modelClone._computedFields(propSet[key]);
           break;
         case 'limit':
           modelClone._limit = propSet[key];
@@ -209,7 +219,7 @@ class Model extends BaseModel {
    *
    * @returns {Promise}
    */
-  fields() {
+  get_fields() {
     return super.call({
       method: 'fields_get',
       kwargs: { context: this.get_context() },
@@ -248,6 +258,12 @@ class Model extends BaseModel {
   _computedFilter(domain) {
     if (Array.isArray(domain)) {
       this._filter = this._filter.concat([domain]);
+    }
+  }
+
+  _computedFields(fields) {
+    if (Array.isArray(fields)) {
+      this._fields = this._fields.concat(fields);
     }
   }
 }

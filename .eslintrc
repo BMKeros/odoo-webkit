@@ -14,6 +14,7 @@
           "_limit",
           "_offset",
           "_computedFilter",
+	  "_computedFields",
           "_fields",
           "_order_by",
           "_filter",

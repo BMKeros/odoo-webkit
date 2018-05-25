@@ -5,6 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
     "build": "babel src/ --out-dir lib/",
     "prepare": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -243,7 +243,7 @@ class Model extends BaseModel {
 
   _computedFields(fields) {
     if (Array.isArray(fields)) {
-      this._fields = this._fields.concat([fields]);
+      this._fields = this._fields.concat(fields);
     }
   }
 }

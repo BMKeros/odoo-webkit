@@ -258,9 +258,7 @@ class Model extends BaseModel {
     return this.limit(1)._execute().then((response) => {
       const result = { ...response.data.result };
       if (Object.prototype.hasOwnProperty.call(result, 'length')) {
-        if (result.length > 0) {
-          return result.records[0];
-        }
+        return (result.length > 0) ? result.records[0] : {};
       }
       return {};
     });

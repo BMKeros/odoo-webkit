@@ -249,6 +249,23 @@ class Model extends BaseModel {
     return this._execute().then(response => response.data.result);
   }
 
+  /**
+   * Execute query and return one result
+   *
+   * @returns {Promise}
+   */
+  getOne() {
+    return this.limit(1)._execute().then((response) => {
+      const result = { ...response.data.result };
+      if (Object.prototype.hasOwnProperty.call(result, 'length')) {
+        if (result.length > 0) {
+          return result.records[0];
+        }
+      }
+      return {};
+    });
+  }
+
   _execute() {
     return super.search_read({
       fields: this._fields,

@@ -1,4 +1,5 @@
 import BaseModel from './base_model';
+import Utils from './utils';
 
 class Model extends BaseModel {
   constructor(...args) {
@@ -34,6 +35,17 @@ class Model extends BaseModel {
    */
   limit(limitParam) {
     return this.clone({ limit: limitParam });
+  }
+
+  /**
+   * Creates a new query with the provided ordering parameters replacing
+   * those of the current query
+   *
+   * @param {Array} fields ordering clauses
+   * @returns {Object} [Model]
+   */
+  order_by(fields) {
+    return this.clone({ order_by: fields });
   }
 
   /**
@@ -271,7 +283,7 @@ class Model extends BaseModel {
       context: this.get_context(),
       offset: this._offset,
       limit: this._limit,
-      sort: this._order_by,
+      sort: Utils.serialize_sort(this._order_by),
     });
   }
 

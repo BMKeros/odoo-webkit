@@ -113,6 +113,9 @@ class Model extends BaseModel {
         case 'offset':
           modelClone._offset = propSet[key];
           break;
+        case 'order_by':
+          modelClone._order_by = propSet[key];
+          break;
         default:
           break;
       }

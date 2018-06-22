@@ -21,9 +21,9 @@ class BaseModel extends Rpc {
     });
   }
 
-  call_button({ method, args = [] }) {
+  call_button(method, args = []) {
     return super.rpc('/web/dataset/call_button', {
-      model: this.name, method, domain_id: null, args,
+      model: this.name, method, domain_id: null, context_id: args.length - 1, args,
     });
   }
 

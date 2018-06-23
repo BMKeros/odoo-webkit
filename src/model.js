@@ -8,7 +8,7 @@ class Model extends BaseModel {
     this._fields = [];
     this._order_by = [];
     this._offset = 0;
-    this._limit = 10;
+    this._limit = 0;
     this._filter = [];
     this._context = {};
   }

@@ -52,6 +52,11 @@ task
     .limit(100)
     .get()
     .then(console.log);
+
+//How call function in ERP
+task
+    .call_button('_toggle_tasks', [data, context])
+    .then(console.log)
 ```
     
 # Usage class Auth

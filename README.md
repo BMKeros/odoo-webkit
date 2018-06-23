@@ -1,12 +1,43 @@
 # odoo-webkit  [![Build Status](https://travis-ci.org/BMKeros/odoo-webkit.svg?branch=master)](https://travis-ci.org/BMKeros/odoo-webkit)
 Tools for development in web for odoo
 
-# Install with NPM
-    npm i odoo-webkit
 
-# Install with yarn
-    yarn add odoo-webkit
-    
+## Installing
+
+Using npm:
+
+```bash
+$ npm install odoo-webkit
+```
+
+Using yarn:
+
+```bash
+$ yarn add odoo-webkit
+```
+
+## Example
+
+```js
+import { Model } from 'odoo-webkit';
+
+const ResUsers = new Model('res.users');
+
+//Create new user
+ResUsers.create({ name: 'testing' }).then(console.log);
+
+//Search users
+ResUsers.filter(['email', 'ilike', '@odoo.com']).get().then(console.log);
+
+//Update user
+ResUsers.write([1], { email: 'testing@odoo.com' }).then(console.log);
+
+//Delete user
+ResUsers.unlink([1]).then(console.log);
+```
+
+## odoo-webkit API
+
 # Usage class Model
 ```js
 import { Model } from 'odoo-webkit';
@@ -72,5 +103,3 @@ auth.login('admin', 'admin', 'test').then(console.log);
 // Method logout
 auth.logout().then(console.log);
 ```
-
-    

@@ -25,8 +25,8 @@ class Model extends BaseModel {
    * Filter
    * @param {Array} domain
    */
-  filter(domain) {
-    return this.clone({ filter: domain });
+  filter(domain, options = {}) {
+    return this.clone({ filter: domain }, options);
   }
 
   /**
@@ -96,13 +96,13 @@ class Model extends BaseModel {
    *
    * @returns {Object} [Model]
    */
-  clone(propSet) {
+  clone(propSet, options = {}) {
     const modelClone = Object.assign(Object.create(Object.getPrototypeOf(this)), this);
 
     Object.keys(propSet).forEach((key) => {
       switch (key) {
         case 'filter':
-          modelClone._computedFilter(propSet[key]);
+          modelClone._computedFilter(propSet[key], options);
           break;
         case 'fields':
           modelClone._computedFields(propSet[key]);
@@ -183,7 +183,7 @@ class Model extends BaseModel {
   }
 
   /**
-   * Fetches the "readable name" for records, based on intrinsic rules
+   * Fetches the 'readable name' for records, based on intrinsic rules
    *
    * @param {Array} ids
    * @returns {Promise}
@@ -290,9 +290,13 @@ class Model extends BaseModel {
     });
   }
 
-  _computedFilter(domain) {
+  _computedFilter(domain, options = {}) {
     if (Array.isArray(domain)) {
-      this._filter = this._filter.concat([domain]);
+      if (Utils.get_value(options, 'only_filter', false)) {
+        this._filter = domain;
+      } else {
+        this._filter = this._filter.concat([domain]);
+      }
     }
   }
 

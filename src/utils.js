@@ -10,7 +10,7 @@ class Utils {
   static serialize_sort(fields_criterion) {
     if (!Array.isArray(fields_criterion)) return false;
     return fields_criterion
-      .map(criteria => ((criteria[0] === '-') ? (`${criteria.slice(1)} DESC`) : (`${criteria} ASC`))).join(', ');
+      .map(criteria => (criteria[0] === '-' ? `${criteria.slice(1)} DESC` : `${criteria} ASC`)).join(', ');
   }
 
   /**
@@ -48,6 +48,19 @@ class Utils {
       `max-age=${ttl}`,
       `expires=${expires.toGMTString()}`,
     ].join(';');
+  }
+
+  /**
+   * Get value of key in object
+   * @param {Object} obj the object
+   * @param {String} key the value key
+   * @param {Any} default the value default if not exist key
+   */
+  static get_value(obj, key, def = null) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      return obj[key];
+    }
+    return def;
   }
 }
 
